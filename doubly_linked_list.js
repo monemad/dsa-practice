@@ -76,19 +76,37 @@ class DoublyLinkedList{
         this.length++;
         return this;
     }
+
+    get(idx) {
+        if (idx < 0 || idx >= this.length) return undefined;
+        if (idx === 0) return this.head;
+        if (idx === this.length - 1) return this.tail;
+        const startFromHead = idx < this.length / 2 ? true : false;
+
+        let current;
+        if (startFromHead) {
+            console.log('HEAD')
+            current = this.head;
+            for (let i = 1; i <= idx; i++) {
+                current = current.next;
+            }
+        } else {
+            console.log('TAIL')
+            current = this.tail;
+            for (let i = this.length - 2; i >= idx; i--) {
+                current = current.prev;
+            }
+        }
+        return current;
+    }
 }
 
 const doublyLinkedList = new DoublyLinkedList();
 
-// doublyLinkedList.push("DSA")
-// doublyLinkedList.push("rocks")
-// doublyLinkedList.push("!")
-doublyLinkedList.unshift("rocks!");
-doublyLinkedList.unshift("Steele");
-doublyLinkedList.unshift("Colt");
+doublyLinkedList.push("DSA")
+doublyLinkedList.push("rocks")
+doublyLinkedList.push("!")
+
 console.log(doublyLinkedList);
-// doublyLinkedList.shift();
-// doublyLinkedList.shift();
-// doublyLinkedList.shift();
-// doublyLinkedList.shift();
-// console.log(doublyLinkedList);
+
+console.log(doublyLinkedList.get(1));
