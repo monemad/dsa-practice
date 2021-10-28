@@ -119,6 +119,20 @@ class DoublyLinkedList{
         }
         return true;
     }
+
+    remove(idx) {
+        if (idx < 0 || idx >= this.length) return undefined;
+        if (idx === 0) return this.shift();
+        if (idx === this.length -1) return this.pop();
+
+        const node = this.get(idx);
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+        node.next = null;
+        node.prev = null;
+        this.length--;
+        return node;
+    }
 }
 
 const doublyLinkedList = new DoublyLinkedList();
@@ -126,7 +140,10 @@ const doublyLinkedList = new DoublyLinkedList();
 doublyLinkedList.push("DSA")
 doublyLinkedList.push("rocks")
 doublyLinkedList.push("!")
+doublyLinkedList.push("1")
+doublyLinkedList.push("2")
+doublyLinkedList.push("3")
 
 
-console.log(doublyLinkedList.insert(2, ':)'));
+console.log(doublyLinkedList.remove(4));
 console.log(doublyLinkedList);
