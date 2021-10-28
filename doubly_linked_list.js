@@ -103,6 +103,22 @@ class DoublyLinkedList{
         if (node) node.val = val;
         return node ? true : false;
     }
+
+    insert(idx, val) {
+        if (idx < 0 || idx > this.length) return false;
+        if (idx === 0) this.unshift(val);
+        else if (idx === this.length) this.push(val);
+        else {
+            const node = new Node(val);
+            const prevNode = this.get(idx-1);
+            node.next = prevNode.next;
+            node.prev = prevNode;
+            prevNode.next = node;
+            node.next.prev = node;
+            this.length++;
+        }
+        return true;
+    }
 }
 
 const doublyLinkedList = new DoublyLinkedList();
@@ -112,5 +128,5 @@ doublyLinkedList.push("rocks")
 doublyLinkedList.push("!")
 
 
-console.log(doublyLinkedList.set(2, '!!!'));
+console.log(doublyLinkedList.insert(2, ':)'));
 console.log(doublyLinkedList);
