@@ -61,16 +61,34 @@ class DoublyLinkedList{
         this.length--;
         return node;
     }
+
+    unshift(val) {
+        const node = new Node(val);
+
+        if(!this.length) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.head.prev = node;
+            node.next = this.head;
+            this.head = node;
+        }
+        this.length++;
+        return this;
+    }
 }
 
 const doublyLinkedList = new DoublyLinkedList();
 
-doublyLinkedList.push("DSA")
-doublyLinkedList.push("rocks")
-doublyLinkedList.push("!")
+// doublyLinkedList.push("DSA")
+// doublyLinkedList.push("rocks")
+// doublyLinkedList.push("!")
+doublyLinkedList.unshift("rocks!");
+doublyLinkedList.unshift("Steele");
+doublyLinkedList.unshift("Colt");
 console.log(doublyLinkedList);
-doublyLinkedList.shift();
-doublyLinkedList.shift();
-doublyLinkedList.shift();
-doublyLinkedList.shift();
-console.log(doublyLinkedList);
+// doublyLinkedList.shift();
+// doublyLinkedList.shift();
+// doublyLinkedList.shift();
+// doublyLinkedList.shift();
+// console.log(doublyLinkedList);
