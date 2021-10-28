@@ -27,6 +27,23 @@ class DoublyLinkedList{
         this.length++;
         return this
     }
+
+    pop() {
+        if(!this.length) return undefined;
+
+        let node = this.tail;
+
+        if(this.head === this.tail) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = node.prev;
+            this.tail.next = null;
+            node.prev = null;
+        }
+        this.length--;
+        return node;
+    }
 }
 
 const doublyLinkedList = new DoublyLinkedList();
@@ -34,4 +51,8 @@ const doublyLinkedList = new DoublyLinkedList();
 doublyLinkedList.push("DSA")
 doublyLinkedList.push("rocks")
 doublyLinkedList.push("!")
+console.log(doublyLinkedList);
+doublyLinkedList.pop();
+doublyLinkedList.pop();
+doublyLinkedList.pop();
 console.log(doublyLinkedList);
