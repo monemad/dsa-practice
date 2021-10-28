@@ -85,19 +85,23 @@ class DoublyLinkedList{
 
         let current;
         if (startFromHead) {
-            console.log('HEAD')
             current = this.head;
             for (let i = 1; i <= idx; i++) {
                 current = current.next;
             }
         } else {
-            console.log('TAIL')
             current = this.tail;
             for (let i = this.length - 2; i >= idx; i--) {
                 current = current.prev;
             }
         }
         return current;
+    }
+
+    set(idx, val) {
+        const node = this.get(idx);
+        if (node) node.val = val;
+        return node ? true : false;
     }
 }
 
@@ -107,6 +111,6 @@ doublyLinkedList.push("DSA")
 doublyLinkedList.push("rocks")
 doublyLinkedList.push("!")
 
-console.log(doublyLinkedList);
 
-console.log(doublyLinkedList.get(1));
+console.log(doublyLinkedList.set(2, '!!!'));
+console.log(doublyLinkedList);
