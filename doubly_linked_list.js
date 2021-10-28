@@ -6,6 +6,11 @@ class Node {
     }
 }
 
+//insertion O(1)
+//removal O(1)
+//searching O(N)
+//access O(N)
+
 class DoublyLinkedList{
     constructor(){
         this.head = null;
