@@ -6,6 +6,16 @@ class Node {
     }
 }
 
+/*
+Time Complexity
+Insertion:
+    Best/Avg: O(log n)
+    Worst: O(n) if the tree is crazy unbalanced and basically a linked list
+Searching
+    Best/Avg: O(log n)
+    Worst: O(n) if the tree is crazy unbalanced and basically a linked list
+*/
+
 class BinarySearchTree {
     constructor() {
         this.root = null;
@@ -40,15 +50,45 @@ class BinarySearchTree {
             return false;
         }
     }
+
+    // recursive
+    find(val, currentNode = this.root) {
+        if (!currentNode) return undefined;
+
+        if(val === currentNode.val)
+            return currentNode
+        if(val > currentNode.val)
+            return this.find(val, currentNode.right);
+        if(val < currentNode.val)
+            return this.find(val, currentNode.left);
+    }
+
+    // iterative
+    contains(val) {
+        if (!this.root) return false;
+
+        let currentNode = this.root;
+        while(currentNode) {
+            if (val === currentNode.val)
+                return true;
+            else if (val > currentNode.val)
+                currentNode = currentNode.right;
+            else if (val < currentNode.val)
+                currentNode = currentNode.left;
+        }
+        return false;
+    }
 }
 
 const bst = new BinarySearchTree();
-console.log(bst);
+// console.log(bst);
 bst.insert(5);
 bst.insert(12);
 bst.insert(2);
 bst.insert(0);
 bst.insert(15);
-bst.insert(15);
-console.log(bst);
-console.log(bst.root.left.left)
+// bst.insert(15);
+// console.log(bst);
+// console.log(bst.root.left.left)
+// console.log(bst.find(56))
+console.log(bst.contains(15))
