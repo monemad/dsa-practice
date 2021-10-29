@@ -60,7 +60,7 @@ class Stack {
 
 //not really relevant for queues
 //searching O(N)
-//access O(N)
+
 class Queue {
     constructor() {
         this.first = null;
@@ -98,3 +98,8 @@ class Queue {
 // queue.enqueue('mangos')
 // console.log(queue.dequeue())
 // console.log(queue)
+
+module.exports = {
+    Queue,
+    Stack
+}

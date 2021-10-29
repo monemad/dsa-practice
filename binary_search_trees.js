@@ -1,3 +1,6 @@
+// import { Queue } from './stacks_and_queues'
+const { Queue, Stack } = require('./stacks_and_queues')
+
 class Node {
     constructor(val) {
         this.val = val;
@@ -78,6 +81,28 @@ class BinarySearchTree {
         }
         return false;
     }
+
+    iterativeBFS(val) {
+        if (!this.root) return undefined;
+
+        const queue = new Queue();
+        queue.enqueue(this.root);
+        // console.log(queue.size);
+        while (queue.size) {
+            // the value of the dequeued element is the whole node
+            let currentNode = queue.dequeue().val;
+            console.log(currentNode.val)
+            if (val === currentNode.val)
+                return currentNode;
+            
+            if (currentNode.left)
+                queue.enqueue(currentNode.left)
+            if (currentNode.right)
+                queue.enqueue(currentNode.right)
+
+        }
+        return undefined;
+    }
 }
 
 const bst = new BinarySearchTree();
@@ -91,4 +116,5 @@ bst.insert(15);
 // console.log(bst);
 // console.log(bst.root.left.left)
 // console.log(bst.find(56))
-console.log(bst.contains(15))
+// console.log(bst.contains(15))
+console.log(bst.iterativeBFS(2))
