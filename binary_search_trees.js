@@ -103,6 +103,26 @@ class BinarySearchTree {
         }
         return undefined;
     }
+
+    recursiveBFS(val, queue) {
+        if (!queue) {
+            console.log('please run once')
+            queue = new Queue()
+            queue.enqueue(this.root)
+        }
+        if (!queue.size) return undefined;
+        const currentNode = queue.dequeue().val;
+        // console.log(currentNode);
+        if (!currentNode) return undefined;
+
+        if (val === currentNode.val)
+            return currentNode;
+        if (currentNode.left)
+            queue.enqueue(currentNode.left)
+        if (currentNode.right)
+            queue.enqueue(currentNode.right)
+        return this.recursiveBFS(val, queue)
+    }
 }
 
 const bst = new BinarySearchTree();
@@ -117,4 +137,4 @@ bst.insert(15);
 // console.log(bst.root.left.left)
 // console.log(bst.find(56))
 // console.log(bst.contains(15))
-console.log(bst.iterativeBFS(2))
+console.log(bst.recursiveBFS(5))
