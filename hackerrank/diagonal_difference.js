@@ -16,3 +16,20 @@ function diagonalDifference(arr) {
 
     return absDifference;
 }
+
+
+// Moiz
+function diagonalDifference(arr) {
+    // Write your code here
+    let leftDiagonal = 0;
+    let rightDiagonal = 0;
+    
+    for (let i = 0; i < arr.length; i++) {
+        leftDiagonal += arr[i][i];
+        rightDiagonal += arr[i][arr.length - 1 - i];
+    }
+    
+    let difference = rightDiagonal - leftDiagonal;
+    if (difference < 0) difference *= -1;
+    return difference;
+}
