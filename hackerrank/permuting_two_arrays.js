@@ -10,3 +10,25 @@ function twoArrays(k, A, B) {
     }
     return 'YES'
 }
+
+// Moiz
+function twoArrays(k, A, B) {
+    // Write your code here
+    A.sort((a,b) => a-b);
+    B.sort((a,b) => b-a);
+    
+    while (A.length && B.length) {
+        let a = A.shift();
+        let b = B.shift();
+        if (a + b < k) return 'NO'
+    }
+    
+    for (let i = 0; i < A.length; i++) {
+        if (A[i] + B[i] < k){
+            return 'NO'
+        } 
+    }
+    
+    return 'YES'
+
+}
